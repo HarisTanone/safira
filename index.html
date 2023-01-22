@@ -6,9 +6,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 </head>
 <body>
-  <audio autoplay hidden>
+  <audio autoplay hidden id="audio">
     <source src="lagu.mp3" type="audio/mpeg">
-    Browsermu tidak mendukung tag audio, upgrade donk!
+    Maaf browsermu tidak mendukung ):
   </audio>
   <section id="four-oh-four">
   <img class="bg"/>
@@ -33,10 +33,15 @@
   </div>
 </section>
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Source+Code+Pro:400,500,600,700' type='text/css' media='screen'/>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.1/typed.min.js'></script>
 
 <style>
+html, body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden
+}
 #four-oh-four img.bg {
   position: absolute;
   background-image: url('bg.jpeg');
@@ -176,7 +181,6 @@
 @media (max-width: 600px) {
   #four-oh-four img.bg {
     background-image: url('bg-mobile.png');
-    height: 105%;
   }
   #four-oh-four .terminal {
     width: 95%;
@@ -188,23 +192,13 @@
   #four-oh-four .message span {
     font-size: 80%;
   }
-  #four-oh-four #error-container .overlay {
-    height: 105%;
-  }
 }
 @media (min-width: 280px) and (max-width: 320px) {
-  #four-oh-four img.bg {
-    background-image: url('bg-mobile.png');
-    height: 115%;
-  }
   #four-oh-four .terminal .window-title .win-buttons {
     width: 28%;
   }
   #four-oh-four .message span {
     font-size: 80%;
-  }
-  #four-oh-four #error-container .overlay {
-    height: 115%;
   }
 }
 </style>
