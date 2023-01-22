@@ -204,10 +204,34 @@ html, body {
 </style>
 
 <script type="text/javascript">
+  window.addEventListener('load', () => {
+			// noinspection JSUnresolvedVariable
+			let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+			let xhr = new XMLHttpRequest();
+			xhr.open('GET', 'lagu.mp3');
+			xhr.responseType = 'arraybuffer';
+			xhr.addEventListener('load', () => {
+				let playsound = (audioBuffer) => {
+					let source = audioCtx.createBufferSource();
+					source.buffer = audioBuffer;
+					source.connect(audioCtx.destination);
+					source.loop = false;
+					source.start();
+					setTimeout(function () {
+						let t = document.createElement('p');
+						t.appendChild(document.createTextNode((new Date()).toLocaleString() + ': Sound played'));
+						document.querySelector('.output').appendChild(t);
+						playsound(audioBuffer);
+					}, 1000 + Math.random()*2500);
+				};
+				audioCtx.decodeAudioData(xhr.response).then(playsound);
+			});
+			xhr.send();
+		});
 $(function() {
   $(".typed").typed({
     strings: [
-      "Selamat ulang tahun Safira Firtia Almana :)<br/>" +
+      "Selamat ulang tahun Safira Fitria Almana :)<br/>" +
       "~<span class='caret'>$</span> Terimakasih udh menjadi orang baik buat teman2.<br/> ^1" +
       "~<span class='caret'>$</span> Semoga semakin bertambah usia semakin menjadi pribadi lebih baik. <br/> ^500" +
       "~<span class='caret'>$</span> Semoga segala keinginan diumur yang baru segera tercapai. <br/> ^1000" +
